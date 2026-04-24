@@ -5,6 +5,17 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListBarangController;
 use App\Http\Controllers\KategoriController;
 
+Route::get('/', [HomeController::class, 'index']);
+
+Route::prefix('pages')->group(function () {
+    
+    Route::get('/home', [HomeController::class, 'index'])->name('pages.home');
+    
+    Route::get('/contact', [HomeController::class, 'contact'])->name('pages.contact');
+
+    Route::get('/list-product', [ListBarangController::class, 'index'])->name('pages.product');
+});
+
 Route::get('/kategori', [KategoriController::class, 'tampilkan']);
 
 Route::get('/welcome', function () {
